@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    
+
+
+    <script language="javascript">
+        function mod(div, base) {
+            return Math.round(div - (Math.floor(div / base) * base));
+        }
+        function calcBmi() {
+            var w = document.bmi.weight.value * 2.2046;
+            var HeightFeetInt = document.bmi.htf.value * 1;
+            var HeightInchesInt = document.bmi.hti.value * 1;
+            HeightFeetConvert = HeightFeetInt * 12;
+            h = HeightFeetConvert + HeightInchesInt;
+            displaybmi = (Math.round((w * 703) / (h * h)));
+            var rvalue = true;
+            if ((w <= 35) || (w >= 500) || (h <= 48) || (h >= 120)) {
+                alert("Invalid data.  Please check and re-enter!");
+                rvalue = false;
+            }
+            if (rvalue) {
+                if (HeightInchesInt > 11) {
+                    reminderinches = mod(HeightInchesInt, 12);
+                    document.bmi.hti.value = reminderinches;
+                    document.bmi.htf.value = HeightFeetInt +
+                    ((HeightInchesInt - reminderinches) / 12);
+                    document.bmi.answer.value = displaybmi;
+                }
+                document.getElementById("bmiresult").innerHTML = "<strong>Your BMI Index is</strong><em> " + displaybmi + "</em><br><strong>Your BMI Result is</strong> <b>";
+                if (displaybmi < 19)
+                    document.getElementById("bmiresult").innerHTML += "Underweight<br>";
+                if (displaybmi >= 19 && displaybmi <= 25)
+                    document.getElementById("bmiresult").innerHTML += "Desirable<br>";
+                if (displaybmi >= 26 && displaybmi <= 29)
+                    document.getElementById("bmiresult").innerHTML += "prone to health risks<br>";
+                if (displaybmi >= 30 && displaybmi <= 40)
+                    document.getElementById("bmiresult").innerHTML += "Obese<br>";
+                if (displaybmi > 40)
+                    document.getElementById("bmiresult").innerHTML += "Extremely obese<br>";
+            }
+            return rvalue;
+        }
+    </script>
+
+</head>
+<body style="background-color:#81F79F">
+    </br></br></br></br>
+Welcome Lakshmi Makkena
+    <p>
+         WELCOME TO DIET PLANNER</h1>&nbsp;
+    </p>
+    <p>
+    
+   
+        <div>
+            <h4><strong> BMI</strong><em> (Body Mass Index)</em></h4>
+<div class="indent-left">
+                <form id="bmi" name="bmi" method="post" action="">
+                    <h2>Height</h2>
+                    <input name="htf" style="width:25px" type="text" />feet
+                    <input name="hti" style="width:25px" type="text" />inches
+                    
+                    <label><span class="text-form"><h2> Weight</h2></span></label>
+                    <input name="weight" style="width:25px" type="text" />kgs<p></p>
+                    <input type="button" id="button-2" value="Calculate BMI" onclick="calcBmi();"> 
+                </form>
+            </div>
+
+            <center><div id="bmiresult"></div></center>
+
+    
+
+</body>
+</html>

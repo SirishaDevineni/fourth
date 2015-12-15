@@ -1,0 +1,29 @@
+<ion-view  view-title="Home">
+	<ion-content>
+		<div class="item item-divider"> 
+			Hello, {{user.name}}.
+		</div>
+	
+		<!-- Display user's daily calorie needs -->
+		<ul class="list">
+			<li class="item">
+				Your Calories: {{user.calsConsumed}} / {{user.dailyCals}}
+    		</li>
+			<div class="item item-divider"> 
+				Calorie Breakdown:
+			</div>
+    		<li class="item">
+				Your Daily Calorie Needs: {{user.dailyCals}}
+    		</li>
+			<li class="item">
+				Calories Consumed Today: {{user.calsConsumed}}
+    		</li>
+			<li class="item">
+				Calories Left For Today: {{user.dailyCals - user.calsConsumed}}
+    		</li>
+		</ul>
+        
+        
+        
+	</ion-content>
+</ion-view>
